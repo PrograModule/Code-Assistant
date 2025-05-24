@@ -1,0 +1,127 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Code Debugger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        textarea {
+            width: 90%;
+            max-width: 800px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #output {
+            margin-top: 20px;
+            width: 90%;
+            max-width: 800px;
+            white-space: pre-wrap;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Python Code Debugger and Explainer</h1>
+    <textarea id="codeInput" placeholder="Paste your Python code here..."></textarea>
+    <div>
+        <button onclick="processCode('debug')">Debug Code</button>
+        <button onclick="processCode('explain')">Explain Code</button>
+    </div>
+    <div id="output"></div>
+
+    <script>
+        async function processCode(task) {
+            const code = document.getElementById("codeInput").value;
+            const output = document.getElementById("output");
+
+            output.textContent = "Processing...";
+            try {
+                const response = await fetch("/process_code", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ code, task }),
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    output.textContent = data.response;
+                } else {
+                    output.textContent = `Error: ${data.error}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Debugger and Tutor</title>
+</head>
+<body>
+    <h1>Welcome to the Code Debugger and Tutor</h1>
+    
+    <!-- Debugging Section -->
+    <h2>Debug Your Code</h2>
+    <form method="POST" action="/debug">
+        <textarea name="code_snippet" placeholder="Enter your Python code here..." rows="10" cols="50"></textarea><br>
+        <button type="submit">Debug Code</button>
+    </form>
+    {% if debug_result %}
+        <h3>Debugging Result:</h3>
+        <pre>{{ debug_result }}</pre>
+    {% endif %}
+
+    <!-- Explanation Section -->
+    <h2>Explain Your Code</h2>
+    <form method="POST" action="/explain">
+        <textarea name="code_snippet" placeholder="Enter your Python code here..." rows="10" cols="50"></textarea><br>
+        <button type="submit">Explain Code</button>
+    </form>
+    {% if explanation_result %}
+        <h3>Explanation Result:</h3>
+        <pre>{{ explanation_result }}</pre>
+    {% endif %}
+
+    <!-- Tutoring Section -->
+    <h2>Get Tutoring Resources</h2>
+    <form method="POST" action="/tutoring">
+        <input type="text" name="topic" placeholder="Enter a topic (e.g., Python Basics, OOP, Flask)" size="50"><br>
+        <button type="submit">Get Resources</button>
+    </form>
+    {% if tutoring_resources %}
+        <h3>Tutoring Resources for "{{ topic }}":</h3>
+        <pre>{{ tutoring_resources }}</pre>
+    {% endif %}
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Debugger</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            background: linear-gradient(90deg, #ff9800, #f44336);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .history-item {
+            transition: background-color 0.3s;
+        }
+        .history-item:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Code Assistant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/explainer.html">Explainer</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="/tutoring">Tutoring</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="/optimizer">Optimizer</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Code Debugger</h1>
+            <p>Analyze and resolve issues in your code efficiently with our advanced debugging tools.</p>
+        </div>
+    </header>
+
+    <section class="container my-5">
+        <h2>Debug Your Code</h2>
+        <form method="POST" action="/debug">
+            <textarea name="code_snippet" placeholder="Enter your Python code here..." rows="10" cols="50"></textarea><br>
+            <button type="submit">Debug Code</button>
+        </form>
+        {% if debug_result %}
+            <h3>Debugging Result:</h3>
+            <pre>{{ debug_result }}</pre>
+        {% endif %}
+    </section>
+
+    <!-- <section class="container my-5">
+        <h2 class="text-center mb-4">Recent Debugging History</h2>
+        <ul class="list-group">
+            <li class="list-group-item history-item">
+                <strong>Debug Session 1:</strong> Fixed syntax error in function definition. <a href="#">View Report</a>
+            </li>
+            <li class="list-group-item history-item">
+                <strong>Debug Session 2:</strong> Optimized loop performance. <a href="#">View Report</a>
+            </li>
+            <li class="list-group-item history-item">
+                <strong>Debug Session 3:</strong> Resolved import errors. <a href="#">View Report</a>
+            </li>
+        </ul>
+    </section> -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Recent Debugging History</h2>
+    
+        <div class="list-group">
+            {% for session in debugging_history %}
+            <div class="list-group-item d-flex justify-content-between align-items-center history-item">
+                <div>
+                    <strong>Debugging Session {{ loop.index }}:</strong> {{ session['summary'] }}...
+                </div>
+                <a href="{{ url_for('view_debug_report', session_id=session['id']) }}" class="btn btn-sm btn-primary">View Report</a>
+            </div>
+            {% endfor %}
+        </div>
+    
+        {% if debugging_history|length == 0 %}
+            <p class="text-center text-muted mt-3">No debugging history available.</p>
+        {% endif %}
+    </section>
+    
+        
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Integration with Popular IDEs</h2>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <a href="https://code.visualstudio.com/" class="btn btn-outline-secondary">Download VSCode Plugin</a>
+            </div>
+            <div class="col-md-4">
+                <a href="https://www.jetbrains.com/pycharm/" class="btn btn-outline-secondary">Download PyCharm Plugin</a>
+            </div>
+            <div class="col-md-4">
+                <a href="https://www.jetbrains.com/idea/" class="btn btn-outline-secondary">Download IntelliJ Plugin</a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Code Assistant. All rights reserved.</p>
+            <p><a href="/contact" class="text-light">Contact Us</a> | <a href="/about" class="text-light">About</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>

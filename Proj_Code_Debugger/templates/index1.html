@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Assistant</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Prism.js CSS for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #ff9800, #f44336);
+            padding: 50px 20px;
+            text-align: center;
+            color: white;
+            border-bottom: 5px solid #e91e63;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+        }
+
+        .feature-section {
+            padding: 50px 20px;
+            background-color: #f8f9fa;
+            color: black;
+        }
+
+        .feature-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonials {
+            background: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b);
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 400px;
+        }
+
+        footer {
+            background: #212529;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Code Assistant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./debugger.html">Debugger</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/explainer">Explainer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tutoring">Tutoring</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/optimizer">Optimizer</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Welcome to Code Assistant</h1>
+            <p>Your one-stop solution for debugging, explaining, optimizing, and tutoring code efficiently.</p>
+            <a href="#features" class="btn btn-light btn-lg mt-3">Explore Features</a>
+        </div>
+    </header>
+
+    <section id="features" class="feature-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Features</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card feature-card text-center bg-primary text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Code Debugger</h5>
+                            <p class="card-text">Identify and fix issues in your code seamlessly.</p>
+                            <!-- <a href="/debugger" class="btn btn-light">Try Debugger</a> -->
+                            <!-- <a href="{{ url_for('debugger') }}" class="btn btn-primary">Try Debugger</a> -->
+                            <a href="./debugger.html" class="btn btn-light">Try Debugger</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card feature-card text-center bg-success text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Code Explainer</h5>
+                            <p class="card-text">Understand complex code with simple explanations.</p>
+                            <a href="/explainer" class="btn btn-light">Try Explainer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card feature-card text-center bg-warning text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Tutoring</h5>
+                            <p class="card-text">Learn coding concepts with personalized tutorials.</p>
+                            <a href="/tutoring" class="btn btn-light">Start Learning</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card feature-card text-center bg-danger text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Code Optimizer</h5>
+                            <p class="card-text">Optimize your code for performance and readability.</p>
+                            <a href="/optimizer" class="btn btn-light">Optimize Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="text-center mb-5">What Our Users Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="/static/img2.jpg" class="rounded-circle me-3" alt="User 1">
+                            <p>"This tool has revolutionized the way I debug my code!" - John Doe</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="/static/img1.jpg" class="rounded-circle me-3" alt="User 2">
+                            <p>"The tutoring feature is a game changer for beginners." - Jane White</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <img src="/static/img3.jpg" class="rounded-circle me-3" alt="User 3">
+                            <p>"I love how it suggests optimizations for my code!" - Alex Brown</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Code Assistant. All rights reserved. | <a href="/contact" class="text-light">Contact Us</a> | <a href="/about" class="text-light">About</a></p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

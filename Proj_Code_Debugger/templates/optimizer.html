@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Optimizer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            background: linear-gradient(90deg, #4CAF50, #008CBA);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Code Assistant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/debugger.html">Debugger</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/explainer">Explainer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tutoring">Tutoring</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link active" href="/optimizer">Optimizer</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Code Optimizer</h1>
+            <p>Improve your code performance and efficiency with AI-powered suggestions.</p>
+        </div>
+    </header>
+
+    <!-- Code Optimization Form -->
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Optimize Your Code</h2>
+        <form action="/optimize" method="POST">
+            <div class="mb-3">
+                <label for="codeSnippet" class="form-label">Paste Your Code Here:</label>
+                <textarea id="codeSnippet" name="code_snippet" class="form-control" rows="8" placeholder="Enter your code..." required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="language" class="form-label">Select Programming Language:</label>
+                <select id="language" name="language" class="form-select" required>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Java">Java</option>
+                    <option value="C++">C++</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Optimize Code</button>
+        </form>
+    </section>
+
+    <!-- Optimization Result -->
+    {% if optimization_result %}
+    <section class="container my-5">
+        <h2 class="text-center mb-4">Optimized Code</h2>
+        <pre class="result-box"><code class="language-python">{{ optimization_result }}</code></pre>
+    </section>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Code Assistant. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>
